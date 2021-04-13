@@ -10,7 +10,6 @@ public class BasicBallAgent : Agent
     private Vector3 beforePos;
     private float beforeDistance = 9999;
     private int targetIdx = -1;
-    
 
     public override void InitializeAgent()
     {
@@ -22,7 +21,7 @@ public class BasicBallAgent : Agent
     {
         AddVectorObs(gameObject.transform.position);
         AddVectorObs(target[targetIdx].transform.position);
-
+         
         AddVectorObs(ballRb.velocity.x);
         AddVectorObs(ballRb.velocity.z);
     }
@@ -79,12 +78,13 @@ public class BasicBallAgent : Agent
             target[targetIdx].transform.localScale = new Vector3(1, 1, 1);
         }
 
-        targetIdx = Random.Range(0, 4);
+        targetIdx = Random.Range(0, 20);
         beforePos = target[targetIdx].transform.position;
         beforePos.y = 1f;
 
         target[targetIdx].transform.position = beforePos;
         target[targetIdx].transform.localScale = new Vector3(1, 2, 1);
+
     }
 
     private void FixedUpdate()
